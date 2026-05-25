@@ -106,7 +106,7 @@ detection logic works even under forced fault conditions.
 
 ## Testbench Architecture
 
-![Waveform](architecture.png)
+![Waveform](architecture_.png)
 
 
 ### Test Coverage
