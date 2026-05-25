@@ -177,35 +177,39 @@ with result, flags, and parity updating correctly at each 10ns interval.
 ![8-bit ALU Simulation Waveform](alu_8bit_tb_waveform.png)
 
 **Key observations from waveform:**
-- `carry_out` pulses HIGH only during ADD overflow (FF+01) ✅
-- `zero_flag` asserts correctly when result = 0x00 ✅
-- `parity_out` toggles based on result bit count ✅
-- `parity_error` fires briefly during injection test then clears ✅
-- `fail_count` remains 0x00000000 throughout entire simulation ✅
+- `carry_out` pulses HIGH only during ADD overflow (FF+01) 
+- `zero_flag` asserts correctly when result = 0x00 
+- `parity_out` toggles based on result bit count 
+- `parity_error` fires briefly during injection test then clears 
+- `fail_count` remains 0x00000000 throughout entire simulation 
 
 ---
 
 ## Skills Demonstrated
-✅ RTL Design in Verilog HDL
-✅ Combinational Logic Design
-✅ ALU Architecture (16-operation)
-✅ Flag Generation (carry, zero, parity)
-✅ Fault Detection (parity-based error detection)
-✅ Self-Checking Testbench Development
-✅ Functional Verification (18 vectors + injection test)
-✅ Simulation in Xilinx Vivado 2024.2
-✅ Waveform Analysis
-✅ Technical Documentation
 
+```text
+RTL Design in Verilog HDL
+Combinational Logic Design
+ALU Architecture (16-operation)
+Flag Generation (carry, zero, parity)
+Fault Detection (parity-based error detection)
+Self-Checking Testbench Development
+Functional Verification (18 vectors + injection test)
+Simulation in Xilinx Vivado 2024.2
+Waveform Analysis
+Technical Documentation
+```
 
 ## File Structure
+
+```text
 8bit-ALU-Verilog/
 ├── alu_8bit.v                  # RTL design — 16-op combinational ALU
 ├── alu_8bit_tb.v               # Self-checking testbench with parity injection
 ├── alu_8bit_tb_waveform.png    # Full simulation waveform screenshot
 ├── .gitignore                  # Excludes Vivado project files
-└── README.md                   # This file
-
+└── README.md
+```
 ---
 
 ## Tools Used
