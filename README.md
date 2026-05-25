@@ -124,31 +124,50 @@ detection logic works even under forced fault conditions.
 
 ## Simulation Results
 =============================================================
-8-bit ALU - 16 Operations + Parity Error Detection
-PASS | ADD        | A=00001010 B=00000101 | Result=00001111 Carry=0 Parity=1
-PASS | ADD_CARRY  | A=11111111 B=00000001 | Result=00000000 Carry=1 Parity=0
-PASS | SUB        | A=00001010 B=00000101 | Result=00000101 Carry=0 Parity=1
-PASS | INC        | A=00000100 B=00000000 | Result=00000101 Carry=0 Parity=1
-PASS | DEC        | A=00000100 B=00000000 | Result=00000011 Carry=0 Parity=0
-PASS | AND        | A=11110000 B=00001111 | Result=00000000 Carry=0 Parity=0
-PASS | OR         | A=11110000 B=00001111 | Result=11111111 Carry=0 Parity=0
-PASS | XOR        | A=11111111 B=00001111 | Result=11110000 Carry=0 Parity=0
-PASS | NAND       | A=11110000 B=00001111 | Result=11111111 Carry=0 Parity=0
-PASS | NOR        | A=11110000 B=00001111 | Result=00000000 Carry=0 Parity=0
-PASS | XNOR       | A=11111111 B=00001111 | Result=00001111 Carry=0 Parity=1
-PASS | NOT_A      | A=10101010 B=00000000 | Result=01010101 Carry=0 Parity=1
-PASS | SHL        | A=00000001 B=00000000 | Result=00000010 Carry=0 Parity=0
-PASS | SHR        | A=00001000 B=00000000 | Result=00000100 Carry=0 Parity=0
-PASS | ROL        | A=10000001 B=00000000 | Result=00000011 Carry=0 Parity=0
-PASS | PASS_A     | A=10101011 B=00000000 | Result=10101011 Carry=0 Parity=1
-PASS | SLT_TRUE   | A=00000011 B=00000101 | Result=00000001 Carry=0 Parity=1
-PASS | SLT_FALSE  | A=00000101 B=00000011 | Result=00000000 Carry=0 Parity=0
-PARITY ERROR INJECTION TEST
-XOR result=11110000 | parity_out(DUT)=0 | parity_error(injected)=1
-PASS | Error detection circuit fires correctly on parity mismatch
-FINAL: 18 PASSED | 0 FAILED
+# 8-bit ALU - 16 Operations + Parity Error Detection
+
+## Test Results
+
+| Test Case | A | B | Result | Carry | Parity | Status |
+|------------|------------|------------|------------|--------|--------|--------|
+| ADD | 00001010 | 00000101 | 00001111 | 0 | 1 | PASS |
+| ADD_CARRY | 11111111 | 00000001 | 00000000 | 1 | 0 | PASS |
+| SUB | 00001010 | 00000101 | 00000101 | 0 | 1 | PASS |
+| INC | 00000100 | 00000000 | 00000101 | 0 | 1 | PASS |
+| DEC | 00000100 | 00000000 | 00000011 | 0 | 0 | PASS |
+| AND | 11110000 | 00001111 | 00000000 | 0 | 0 | PASS |
+| OR | 11110000 | 00001111 | 11111111 | 0 | 0 | PASS |
+| XOR | 11111111 | 00001111 | 11110000 | 0 | 0 | PASS |
+| NAND | 11110000 | 00001111 | 11111111 | 0 | 0 | PASS |
+| NOR | 11110000 | 00001111 | 00000000 | 0 | 0 | PASS |
+| XNOR | 11111111 | 00001111 | 00001111 | 0 | 1 | PASS |
+| NOT_A | 10101010 | 00000000 | 01010101 | 0 | 1 | PASS |
+| SHL | 00000001 | 00000000 | 00000010 | 0 | 0 | PASS |
+| SHR | 00001000 | 00000000 | 00000100 | 0 | 0 | PASS |
+| ROL | 10000001 | 00000000 | 00000011 | 0 | 0 | PASS |
+| PASS_A | 10101011 | 00000000 | 10101011 | 0 | 1 | PASS |
+| SLT_TRUE | 00000011 | 00000101 | 00000001 | 0 | 1 | PASS |
+| SLT_FALSE | 00000101 | 00000011 | 00000000 | 0 | 0 | PASS |
 
 ---
+
+## Parity Error Injection Test
+
+```text
+XOR result           = 11110000
+parity_out (DUT)     = 0
+parity_error         = 1
+
+PASS | Error detection circuit fires correctly on parity mismatch
+```
+
+---
+
+# Final Result
+
+```text
+18 PASSED | 0 FAILED
+```
 
 ## Simulation Waveform
 
